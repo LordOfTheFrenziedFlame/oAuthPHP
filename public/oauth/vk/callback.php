@@ -6,10 +6,11 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 use OAuth\Core\SessionManager;
 use OAuth\VkOAuth;
+use OAuth\Http\CurlHttpClient;
 
 $session = new SessionManager();
 $config = require __DIR__ . '/../../../config/vk-config.php';
-$vkOAuth = new VkOAuth($config, $session);
+$vkOAuth = new VkOAuth($config, $session, new CurlHttpClient());
 
 if (isset($_GET['error'])) {
     $session->set('error', $_GET['error_description'] ?? $_GET['error']);
@@ -22,7 +23,6 @@ if (!isset($_GET['code'])) {
     header('Location: /');
     exit;
 }
-
 
 error_log('Received state from VK: ' . ($_GET['state'] ?? 'not set'));
 error_log('State in session: ' . $session->get('oauth_state'));
@@ -43,7 +43,7 @@ try {
     error_log('Device ID: ' . ($deviceId ?? 'not set'));
     error_log('Ext ID: ' . ($extId ?? 'not set'));
 
-    $tokenData = $vkOAuth->getAccessToken($code, $deviceId, $extId);
+    $tokenData = $vkOAuth->getAccessToken($code, $deviceId, $_GET['state']);
     $accessToken = $tokenData['access_token'] ?? null;
     if (!$accessToken) {
         throw new Exception('Не удалось получить access_token');
