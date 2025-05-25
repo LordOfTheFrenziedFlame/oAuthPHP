@@ -1,0 +1,61 @@
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
+!.env.example
+.env.local
+.env.*.local
+
+# Dependencies
+/vendor/
+composer.lock
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+logs/
+php_errors.log
+error_log
+
+# Cache
+*.cache
+/cache/
+.phpunit.result.cache
+
+# Config files with sensitive data
+/config/vk-config.php
+/config/*.local.php
+
+# Build and dist
+/build/
+/dist/
+/node_modules/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# PHP specific
+.phpunit.result.cache
+.php_cs.cache
+.php-cs-fixer.cache
+.php_cs
+.php-cs-fixer.php
+.phpunit.xml
+phpunit.xml
+.php_cs.dist
+.php-cs-fixer.dist.php
+.phpunit.xml.dist

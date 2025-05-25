@@ -1,0 +1,15 @@
+{
+  "name": "oauthphp",
+  "version": "1.0.0",
+  "description": "Простая реализация OAuth аутентификации через VK на чистом PHP с соблюдением принципов SOLID.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ngrok": "^5.0.0-beta.2"
+  }
+}
